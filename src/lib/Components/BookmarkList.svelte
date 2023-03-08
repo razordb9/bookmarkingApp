@@ -24,8 +24,8 @@
                         beschreibung = {beschreibung}
                         {name}
                         {url}
-                        --card-background = "blue"
-                        --card-heigth = "100px"
+                        --card-background = "red"
+                        --card-heigth = "auto"
                     >
                         
                     </BookmarkCard>

@@ -1,18 +1,34 @@
 <script lang="ts">
 
-  
+    import NewListItem from '$lib/Components/NewListItem.svelte';
     import Search from '$lib/Components/Search.svelte'; 
     import BookmarkList from '$lib/Components/BookmarkList.svelte';
 	import { count } from '$lib/Components/store.js';
-	
+	let showNewListItem = false;
 
-	// let countValue;
+	// let showNewListItem = false;et countValue;
 
 	// count.subscribe(value => {
 	// 	countValue = value;
 	// });
     
 </script>
+
+    <button on:click={() => (showNewListItem = true)}>
+        New
+    </button>
+
+    <NewListItem bind:showNewListItem>
+        <!-- <h2 slot="header">
+            Add new Bockmark Item
+        </h2>
+        <div>
+            Name: <input type="text" value=""><br>
+            Url: <input type="text" value=""><br>
+            Beschreibung: <input type="text" value="">
+        </div> -->
+        
+    </NewListItem>
     <Search />
     
     <BookmarkList

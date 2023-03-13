@@ -2,10 +2,15 @@
 	import Incrementer from '$lib/Components/Incrementer.svelte';
 	import Decrementer from '$lib/Components/Decrementer.svelte';
 	import { count } from '$lib/Components/store.js';
-
+	import { bookmarks} from '$lib/Components/bookmarkstore';
+  	import type { Bookmark } from './Interfaces/bookmark';
 	export let showNewListItem; // boolean
 
+	let bookmark:Bookmark = {};
+	$: console.log("bookmarkstore: ", $bookmarks);
+
 	let dialog; // HTMLDialogElement
+
 
 	$: if (dialog && showNewListItem) dialog.showModal();
 
@@ -18,15 +23,22 @@
 	}
 
 	const addToStore = () => {
-		$count = [...$count,
-			{
-				"Name" : (document.getElementById("name") as HTMLInputElement).value,
-				"Beschreibung" : (document.getElementById("beschreibung") as HTMLInputElement).value,
-				"URL" : (document.getElementById("url") as HTMLInputElement).value,
-			}
-		];
-		document.getElementById("newListItem").reset();
+		const idx = $bookmarks.length > 0 ? Math.max(...$bookmarks.map(bookmark => bookmark["id"])) + 1 : 1;
+		console.log("id: ", idx);
+
+		let newBookmark = {id: idx, ...bookmark}
+
+		bookmarks.addBookmark(newBookmark);
 		dialog.close();
+		// $count = [...$count,
+		// 	{
+		// 		"Name" : (document.getElementById("name") as HTMLInputElement).value,
+		// 		"Beschreibung" : (document.getElementById("beschreibung") as HTMLInputElement).value,
+		// 		"URL" : (document.getElementById("url") as HTMLInputElement).value,
+		// 	}
+		// ];
+		// document.getElementById("newListItem").reset();
+		// dialog.close();
 	};
 </script>
 
@@ -43,13 +55,13 @@
         </h2>
         <form id="newListItem">
             <label for="name">Name</label>
-			<input id="name" type="text" required><br>
+			<input id="name" type="text" bind:value={bookmark.name} required><br>
 			
 			<label for="url">URL</label>
-            <input id="url" type="text" required><br>
+            <input id="url" type="text" bind:value={bookmark.url} required><br>
 
 			<label for="beschreibung">Beschreibung</label>
-            <input id="beschreibung" type="text" required>
+            <input id="beschreibung" type="text" bind:value={bookmark.beschreibung} required>
 
 			<button on:click={addToStore}>save</button>
 		</form>

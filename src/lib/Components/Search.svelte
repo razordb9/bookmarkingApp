@@ -1,35 +1,22 @@
 <script lang="ts">
-    import NewListItem from '$lib/Components/NewListItem.svelte';
+    
 
-    let showNewListItem = false;
 
 
 
 </script>
 
-<div class="search">
-    <input type="search" placeholder="Search..."/>
-
-    <button >
-        search
-    </button>
-
-    <button on:click={() => (showNewListItem = true)}>
-        New
-    </button>
+    <form role='search'>
+        <label for='header-search'>
+        <span class='visually-hidden'>Search</span>
+        </label>
     
-    <NewListItem bind:showNewListItem>
-        <!-- <h2 slot="header">
-            Add new Bockmark Item
-        </h2>
-        <div>
-            Name: <input type="text" value=""><br>
-            Url: <input type="text" value=""><br>
-            Beschreibung: <input type="text" value="">
-        </div> -->
-        
-    </NewListItem>
-</div>
+        <input type='text' id='header-search'/>
+    
+        <button type='submit'>
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+    </form>
 
 <style>
     .search {

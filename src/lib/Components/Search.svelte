@@ -1,10 +1,34 @@
 <script lang="ts">
-    export let searchItem = '';
+    import NewListItem from '$lib/Components/NewListItem.svelte';
+
+    let showNewListItem = false;
+
+
+
 </script>
 
 <div class="search">
     <input type="search" placeholder="Search..."/>
-    <input type="button" alt="NEW" value="NEW">
+
+    <button >
+        search
+    </button>
+
+    <button on:click={() => (showNewListItem = true)}>
+        New
+    </button>
+    
+    <NewListItem bind:showNewListItem>
+        <!-- <h2 slot="header">
+            Add new Bockmark Item
+        </h2>
+        <div>
+            Name: <input type="text" value=""><br>
+            Url: <input type="text" value=""><br>
+            Beschreibung: <input type="text" value="">
+        </div> -->
+        
+    </NewListItem>
 </div>
 
 <style>
@@ -21,7 +45,5 @@
         width: 50%;
         height: 20px;
     }
-    input[type=button] {
-       justify-content: flex-end;
-    }
+
 </style>

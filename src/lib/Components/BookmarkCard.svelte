@@ -1,17 +1,17 @@
 <script lang="ts">
-    export let name = "";
-    export let beschreibung = "";
-    export let url = "";
+    export let Name = "";
+    export let Beschreibung = "";
+    export let URL = "";
     let edit = false;
-
+    
     const editCard = () => {
         edit=!edit;
     }
-
     const saveCard = () => {
         edit=false;
         
     }
+    
 </script>
 
 <div class="card">
@@ -19,13 +19,14 @@
     <button on:click={saveCard}>save</button>
     
     {#if edit === false}
-        <h2>Name: {name}</h2>
-        Url: <a target="_blank" rel="noreferrer" href={url}>{name}</a>
-        <p>Beschreibung: {beschreibung}</p>
+        <h2>Name: {Name}</h2>
+        Url: <a target="_blank" rel="noreferrer" href={URL}>{Name}</a>
+        <p>Beschreibung: {Beschreibung}</p>
     {:else}
-        <h2>Name: <input type="text" value={name}></h2>
-        Url: <input type="text" value={url}><br>
-        Beschreibung: <input type="text" value={beschreibung}>
+        <h2>Name: <input type="text" value={Name}></h2>
+        Url: <input type="text" value={URL}><br>
+        Beschreibung: <input type="text" value={Beschreibung}>
+        <button>delete</button>
     {/if}
     
 </div>
@@ -36,5 +37,4 @@
         height: var(--card-heigth);
         background: var(--card-background);
     }
-
 </style>

@@ -7,6 +7,10 @@
     
     let listView = false;
     
+    // const removeFromStore () {
+
+
+    // }
 
 
     const switchView = () => {
@@ -38,13 +42,13 @@
                     <table>
                         <thead>
                         <tr>
-                            {#each Object.keys($count[0]) as columnHeading}
+                            {#each Object.keys($bookmarks[0]) as columnHeading}
                                 <th>{columnHeading}</th>
                             {/each}
                         </tr>
                         </thead>
                         <tbody>
-                            {#each Object.values($count) as row}
+                            {#each Object.values($bookmarks) as row}
                                 <tr>
                                     {#each Object.values(row) as content}
                                         <BookmarkTable
@@ -64,7 +68,7 @@
     </div>               
 </div> 
 
-<style>
+<style lang="scss">
     .container {
         position: relative;
         border: 3px solid green;

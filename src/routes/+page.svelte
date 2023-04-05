@@ -4,6 +4,7 @@
     import Search from '$lib/Components/Search.svelte'; 
     import BookmarkList from '$lib/Components/BookmarkList.svelte';
 	import { count } from '$lib/Components/store.js';
+    import { getAuth, signOut, onAuthStateChanged} from 'firebase/auth';
 	let showNewListItem = false;
 
 	// let showNewListItem = false;et countValue;
@@ -11,6 +12,31 @@
 	// count.subscribe(value => {
 	// 	countValue = value;
 	// });
+    
+    // function signOUT () {
+    //     const auth = getAuth();
+    //     signOut(auth).then(() => {
+    //         //Signout
+    //     }).catch((error) => {
+    //         alert(error.code + "\n" + error.message);
+    //     });
+    // }
+
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    if (user) {
+        console.log("User signed in");
+    } else {
+        console.log("Use not signed in");
+    }
+    // onAuthStateChanged(auth, (user) => {
+    //     if (user) {
+    //         console.log("user is signed in " + user.email);
+    //     } else {
+    //         console.log("no user logged in");
+    //     }
+    // });
     
 </script>
 
@@ -42,19 +68,7 @@
     <!-- <h1>The count is {countValue}</h1> -->
 <p></p>
 
-<!-- <div class="container">
-    <div class="box box1">1</div>
-    <div class="box box2">2</div>
-    <div class="box box3">3</div>
-    <div class="box box4">4</div>
-    <div class="box box5">5</div>
-    <div class="box box6">6</div>
-    <div class="box box7">7</div>
-    <div class="box box8">8</div>
-    <div class="box box9">9</div>
-    <div class="box box10">10</div>
-
-</div> -->
+<!-- <button on:click={signOUT}>sign out</button> -->
 
 
 <style>

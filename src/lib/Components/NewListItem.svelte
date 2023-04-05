@@ -1,6 +1,4 @@
 <script lang="ts">
-	import Incrementer from '$lib/Components/Incrementer.svelte';
-	import Decrementer from '$lib/Components/Decrementer.svelte';
 	import { count } from '$lib/Components/store.js';
 	import { bookmarks} from '$lib/Components/bookmarkstore';
   	import type { Bookmark } from './Interfaces/bookmark';

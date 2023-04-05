@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { enhance, SubmitFunction } from '$app/forms';
-    import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+    import { signInWithEmailAndPassword } from 'firebase/auth';
     import { auth } from "$lib/firebase/client/initialize";
  
 
@@ -23,8 +23,7 @@
             alert(error.code + "\n" + error.message);
             console.log(error.code);
             console.log(error.message);
-        })
-        
+        }) 
     }
     
 </script>

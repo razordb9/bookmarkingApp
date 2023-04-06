@@ -17,4 +17,10 @@ export const routes=[
         public: true,
         icon: "",
     },
+    {
+        pathname: "/dashboard",
+        name: "Dashboard",
+        public: true,
+        icon: "",
+    },
 ]

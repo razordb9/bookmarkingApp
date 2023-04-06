@@ -19,10 +19,10 @@
             password:event.data.get("password")?.toString() || "",
             email:event.data.get("email")?.toString() || ""
         }
-        console.log(user);
+        console.log("user: ", user);
         const userCredentials = await createUserWithEmailAndPassword (auth, user.email, user.password)
         const userx = userCredentials.user;
-        console.log(userx);
+        console.log("userx: ", userx);
       
     }
 
@@ -33,27 +33,22 @@
         email:string
     }
 
-    const submitAction = async (event) => {
-        // const formData = new FormData(event.target as HTMLFormElement)
-        // const user:User = {
-        //     'firstname': formData.get("firstname") as string || "",
-        //     'lastname': formData.get("lastname") as string || "",
-        //     'password': formData.get("password") as string || "",
-        //     'email': formData.get("email") as string || ""
-        // }
-        // console.log(user);
-        // const userCredentials = await createUserWithEmailAndPassword (auth, user.email, user.password)
-        // const userx = userCredentials.user;
-        // console.log(userx);
-        const formData = new FormData(event.target as HTMLFormElement);
-        const response = await fetch(event.action, {
+    const submitAction:SubmitFunction = async (event) => {
+        const formData = new FormData(event.form as HTMLFormElement);
+        const response = await fetch(event.form.action, {
             method: 'POST',
-            body: formData
+            body: formData,
+            headers: {
+                'x-sveltekit-action': 'true'
+            }
         });
-
         const result = deserialize(await response.text());
-
-        console.log("result", result);
+        console.log("result",result)
+        if (result.type === 'success') {
+            // re-run all `load` functions, following the successful update
+            // await invalidateAll();
+        }
+        applyAction(result);
     }
 
 </script>

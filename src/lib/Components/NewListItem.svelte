@@ -5,7 +5,7 @@
 	export let showNewListItem; // boolean
 
 	let bookmark:Bookmark = {};
-	$: console.log("bookmarkstore: ", $bookmarks);
+	// $: console.log("bookmarkstore: ", $bookmarks);
 
 	let dialog; // HTMLDialogElement
 

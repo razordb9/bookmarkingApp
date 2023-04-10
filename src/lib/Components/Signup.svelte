@@ -1,41 +1,28 @@
 <script lang="ts">
-	// import { getAuth } from 'firebase/auth';
-    import { getAuth, createUserWithEmailAndPassword  } from "firebase/auth";
 	import { applyAction, deserialize, enhance, type SubmitFunction } from '$app/forms';
-    import { page } from '$app/stores';
-    import type { ActionResult } from '@sveltejs/kit';
-    import { auth } from "$lib/firebase/client/initialize";
-
-
-    console.log("data", $page.form);
-
+    import { signInWithCustomToken } from '$lib/firebase/client/helper';
+    import type { FirebaseCreateUserResponse } from '$lib/types/firebaseCreateUserResponse';
+    import { goto } from '$app/navigation';
+    import uiStore from '$lib/stores/uiStore';
+    import { fetchUserFromFireBase } from '$lib/utils/shared';
     
-
-
-    const handleSignIn:SubmitFunction = async (event) =>{
-        const user = {
-            firstname:event.data.get("firstname"),
-            lastname:event.data.get("lastname"),
-            password:event.data.get("password")?.toString() || "",
-            email:event.data.get("email")?.toString() || ""
-        }
-        console.log("user: ", user);
-        const userCredentials = await createUserWithEmailAndPassword (auth, user.email, user.password)
-        const userx = userCredentials.user;
-        console.log("userx: ", userx);
-      
-    }
-
-    type User =  {
-        firstname:string,
-        lastname:string,
-        password:string,
-        email:string
-    }
-
-    const submitAction:SubmitFunction = async (event) => {
-        const formData = new FormData(event.form as HTMLFormElement);
-        const response = await fetch(event.form.action, {
+    let formError:string | null = "";
+ 
+    // const FirebaseSignup = async (formData: FormData)=> {
+    //     const userData = {
+    //         "email":formData.get("email")?.toString() || "",
+    //         "password":formData.get("password")?.toString() || "",
+    //     }
+    //     const credentials = await createUserWithEmailAndPassword(auth, userData.email, userData.password)
+    //     const user = (await credentials).user;
+    //     return user;
+    // }
+    const submitAction = async (event:Event)=>{
+        
+        const from = event.target as HTMLFormElement
+        const action = from.action;
+        const formData = new FormData(from as HTMLFormElement);
+        const response = await fetch(action, {
             method: 'POST',
             body: formData,
             headers: {
@@ -43,19 +30,22 @@
             }
         });
         const result = deserialize(await response.text());
-        console.log("result",result)
         if (result.type === 'success') {
-            // re-run all `load` functions, following the successful update
-            // await invalidateAll();
+            const data = result.data as FirebaseCreateUserResponse;
+            if(data.created && data.customToken) {
+                goto('/login')
+               
+            }
+            formError = data.errorInfo;
+        }else {
+            formError ="something went wrong...";
         }
         applyAction(result);
     }
-
 </script>
 
-<!-- <form class="form" method="POST" use:enhance action="?/signup" > -->
-<form class="form" method="POST" action="?/signup" on:submit|preventDefault use:enhance={handleSignIn} >
-<!-- <form class="form" action="?/signup" on:submit|preventDefault = {submitAction}> -->
+    <form class="form" method="POST" on:submit|preventDefault="{submitAction}" action="?/signup" >
+    <!-- <form class="form" method="POST" use:enhance action="?/signup" > -->
     <div class="grid">
         <label for="firstname">
             First name
@@ -74,8 +64,11 @@
     <label for="email">Email address</label>
     <input type="email" id="email" name="email" placeholder="Email address" required>
     <button type="submit">Submit</button>
+    {#if formError }
+       { formError }
+    {/if}
+
 </form>
-<!-- </form> -->
 
 <style lang="scss">
  

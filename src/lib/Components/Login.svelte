@@ -25,6 +25,7 @@
           console.log("response", response.ok);
           console.log("response status", response.status);
           if(response.ok && response.status === 200) {
+                console.log("true repsonse")
               const {claims} = await user.getIdTokenResult();
               uiStore.set({admin:claims.admin, dashboard:claims.dashboard})
               goto('/dashboard');

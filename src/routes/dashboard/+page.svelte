@@ -8,7 +8,8 @@
 <h1>Dashboard</h1>
 
 
-{#if user?.uid}   
+{#if user?.uid}  
+    console.log("user", user);
     uid: {user?.uid} <br>
     name: {user?.displayName} <br>
     is admin:{claims?.admin} <br>

@@ -11,7 +11,7 @@ export const createUser = async (data:FormData) => {
         const credentials = getCredentialsFromFormData(data);
 
         const displayName = getDisplayNameFromFormData(data);
-
+        console.log("getDisplayNameFromFormData", displayName);
         const record = await admin.auth()
             .createUser({
                 email: credentials.email,
@@ -71,6 +71,7 @@ export const getUserFromToken = (decodedIdToken: DecodedIdToken)=>{
         email: email,
         uid: uid
     };
+    console.log("getUserFromToken", user);
     return user;
 }
 

@@ -12,7 +12,7 @@ export const handle:Handle = (async ({event, resolve})=>{
     event.locals.user =null;
     event.locals.claims ={
         admin: false,
-        dashboard: false,
+        dashboard: true,
     };
     try {
         initializeAdminApp(admin);

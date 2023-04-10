@@ -9,11 +9,10 @@
 
 
 {#if user?.uid}  
-    console.log("user", user);
     uid: {user?.uid} <br>
     name: {user?.displayName} <br>
-    is admin:{claims?.admin} <br>
-    dashboard:{claims?.dashboard}
+    is admin: {claims?.admin} <br>
+    dashboard: {claims?.dashboard}
 {:else}
     <p>not logged in...</p>
 {/if}

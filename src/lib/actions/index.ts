@@ -1,5 +1,6 @@
-import { applyAction, deserialize } from "$app/forms"
-import { json } from "@sveltejs/kit"
+import { applyAction, deserialize } from "$app/forms";
+import { goto } from '$app/navigation';
+import { json } from "@sveltejs/kit";
 
 export const enhancer = (form: HTMLFormElement) => {
     const submitAction = async (event: SubmitEvent) => {
@@ -37,6 +38,7 @@ export const fire = (node: HTMLElement) => {
             }
         })
         console.log("logout response", response.body);
+        goto('/');
     }
     node.addEventListener('click', logout)
 

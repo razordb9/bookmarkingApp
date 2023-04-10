@@ -1,7 +1,11 @@
 <script lang="ts">
+    import {fire} from "$lib/actions";
     import {routes} from "$lib/routes.js";
-</script>
+    import {user} from "$lib/stores/fireStore";
+    export let uid="";
 
+    
+</script>
 <nav class="navigation">
     <ul>
         {#each routes as route}
@@ -11,5 +15,21 @@
                 </li>
             {/if}
         {/each}
+        {#if $user?.uid}
+            <li>
+                <a role="" href="/dashboard">Dashboard</a>
+            </li>
+            <li>
+                <a role="" use:fire on:logout href="/">Logout</a>
+            </li>
+        {:else}
+            <li>
+                <a role="" href="/login">Login</a>
+            </li>
+            <li>
+                <a role="button" href="/signup"><span>Create accout</span></a>
+            </li>
+        {/if}
     </ul>
 </nav>
+

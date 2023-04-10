@@ -8,6 +8,7 @@ import { getApps, getApp } from 'firebase/app';
 const initializeAdminApp= (admin: { credential: { cert: (arg0: any) => any; }; })=> {
     if(!browser) {
         if (!getApps().length){
+            console.log("getapps.length admin initialize");
             initializeApp({
                 credential: admin.credential.cert(JSON.parse(PRIVATE_FIREBASE_ADMIN)),
                 databaseURL: `https://${JSON.parse(PRIVATE_FIREBASE_ADMIN).project_id}.firebaseio.com` 

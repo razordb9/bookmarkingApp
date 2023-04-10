@@ -4,23 +4,30 @@
   import uiStore from '$lib/stores/uiStore';
   import { fetchUserFromFireBase } from '$lib/utils/shared';
   import type { Credentials } from '$lib/types/credentials';
+
   const login = async (event: Event) => {
       const form = event.target as HTMLFormElement
       const formData = new FormData(form as HTMLFormElement);
+
       const userData:Credentials = {
           "email": formData.get("email")?.toString() || "",
           "password": formData.get("password")?.toString() || ""
       }
+      console.log("Userdata", userData);
       if(userData.password && userData.email) {
+
           const userCredential = await signInWithEmailAndPassword(userData)
           const user = userCredential.user;
+          console.log("user", user);
           const idToken = await user.getIdToken();
-          
+          console.log("idToken", idToken);
           const response = await fetchUserFromFireBase(idToken);
+          console.log("response", response.ok);
+          console.log("response status", response.status);
           if(response.ok && response.status === 200) {
               const {claims} = await user.getIdTokenResult();
               uiStore.set({admin:claims.admin, dashboard:claims.dashboard})
-              goto('/dashbord');
+              goto('/dashboard');
           }
       }
   }
@@ -44,4 +51,5 @@
 
 
 <style lang="scss">
+
 </style>

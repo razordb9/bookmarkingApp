@@ -35,7 +35,9 @@ export const POST = (async ({ request, cookies }) => {
 
     const sessionCookie = await createSessionCookie(idToken, sessionCookieOptions);
 
-    cookies.set('session', sessionCookie, options);
+    cookies.set('session', sessionCookie, options);    console.log("idToken shared.ts", idToken);
+    console.log("stringify", JSON.stringify(idToken));
+    
 
     const user:User | null = getUserFromToken(decodedIdToken);
 

@@ -7,5 +7,6 @@ export const fetchUserFromFireBase = async (idToken:string) => {
             'x-sveltekit-action': 'true'
         }
     })
+    console.log("respones shared.ts", response);
     return response;
 }

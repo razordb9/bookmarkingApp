@@ -16,7 +16,14 @@ npm create svelte@latest my-app
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Once you've created a project and install dependencies with `npm install` (or `pnpm install` or `yarn`).
+Also install the following dependencies: 
+- firebase
+- firebase-admin
+- sass
+
+
+start a development server:
 
 ```bash
 npm run dev

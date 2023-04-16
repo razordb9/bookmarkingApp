@@ -1,6 +1,4 @@
 <script lang="ts">
-    import Header from '$lib/Components/Header.svelte';
-    import Footer from '$lib/Components/Footer.svelte';
     // import './style.css';
     import '$lib/css/pico.min.css'
     import Navigation from '$lib/Components/Navigation.svelte';
@@ -14,11 +12,16 @@
         await logout();
     }
 </script>
-
-<div class="main">
-    <!--<Header />-->
+<div class="app">
     <Navigation on:logout={handleLogout}></Navigation>
-    <slot></slot>
 
-    <!--<Footer />-->
+    <main>
+        <slot />
+    </main>
+
+    <footer>
+		<p>Copyright &copy by Thomas Hudson Zaußnig</p>
+	</footer>
+
 </div>
+

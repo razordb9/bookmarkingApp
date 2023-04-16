@@ -17,6 +17,7 @@ function createBookmarkStore () {
     const removeBookmark = (_bookmark:Bookmark) => update((state):any => {
         const currentState:Array<Bookmark> = [...state];
         let newState = currentState.filter(bookmark => bookmark.id !== _bookmark.id);
+        return newState;
     })
     return {subscribe, updateBookmark, addBookmark, removeBookmark}
 }

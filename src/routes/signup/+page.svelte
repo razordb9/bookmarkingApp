@@ -9,7 +9,6 @@
     console.log("server data: ", data)
 </script>
 
-<h1>Signup</h1>
 
 <Signup></Signup>
 

@@ -5,19 +5,19 @@
 
 
 </script>
+<main class="container">
+    <h2>Search item</h2>
+    <p>
+        Here you can search for your own bookmark items.
+    </p>
+    <!-- <form class="form" method="POST" on:submit|preventDefault="{login}" > -->
+    <form class="form" method="POST">
+        <!-- <form class="form" method="POST" action="?/login" on:submit|preventDefault="{loginAction}" > -->
+        <input type="email" id="email" name="email" placeholder="Search" required>
 
-    <form role='search'>
-        <label for='header-search'>
-        <span class='visually-hidden'>Search</span>
-        </label>
-    
-        <input type='text' id='header-search'/>
-    
-        <button type='submit'>
-            <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
+        <button type="submit">Search</button>
     </form>
-
+</main>
 <style>
     .search {
         display: flex;

@@ -9,7 +9,8 @@ export const load = (async(event) => {
     if(locals.claims.dashboard === false) throw redirect(307, '/');
 
     const client = getUserFromToken(locals.user);
-    console.log(client);
+
+     console.log("+page.server.ts dashboard", client);
     return {
         client:client,
         claims:locals.claims

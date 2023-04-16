@@ -37,7 +37,7 @@ export const fire = (node: HTMLElement) => {
                 'x-sveltekit-action': 'true'
             }
         })
-        console.log("logout response", response.body);
+        console.log("index.ts logout response", response.body);
         goto('/');
     }
     node.addEventListener('click', logout)
@@ -45,7 +45,7 @@ export const fire = (node: HTMLElement) => {
     const login = async (event: Event) => {
         event.preventDefault()
         const form = event.target as HTMLFormElement
-        console.log("login form", form)
+        console.log("index.ts login form", form)
     }
     node.addEventListener('click', login)
 

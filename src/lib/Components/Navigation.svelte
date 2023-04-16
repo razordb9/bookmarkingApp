@@ -33,3 +33,22 @@
     </ul>
 </nav>
 
+<style lang="scss">
+    nav{
+        ul, li, a{
+            margin: 0;
+            a[role="button"] {
+                width:auto;
+                span{
+                    margin: 0  10px;
+                }
+            }
+            float: right;
+            
+        }
+        float: right;
+        // ul>li:last-child > a{
+        //     border: 2px solid var(--primary);
+        // }
+    }
+</style>

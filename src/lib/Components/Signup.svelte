@@ -44,31 +44,21 @@
     }
 </script>
 
+
+<main class="container">
     <form class="form" method="POST" on:submit|preventDefault="{submitAction}" action="?/signup" >
-    <!-- <form class="form" method="POST" use:enhance action="?/signup" > -->
-    <div class="grid">
-        <label for="firstname">
-            First name
-            <input type="text" id="firstname" name="firstname" placeholder="First name" required>
-        </label>
-
-        <label for="lastname">
-            Last name
-            <input type="text" id="lastname" name="lastname" placeholder="Last name" required>
-        </label>
-        <label for="password">
-            Password
-            <input type="text" id="password" name="password" placeholder="Password" required>
-        </label>
-    </div>
-    <label for="email">Email address</label>
-    <input type="email" id="email" name="email" placeholder="Email address" required>
-    <button type="submit">Submit</button>
-    {#if formError }
-       { formError }
-    {/if}
-
-</form>
+        <!-- <form class="form" method="POST" use:enhance action="?/signup" > -->
+        <input type="text" id="firstname" name="firstname" placeholder="First name" required>
+        <input type="text" id="lastname" name="lastname" placeholder="Last name" required>    
+        <input type="text" id="password" name="password" placeholder="Password" required>    
+        <input type="email" id="email" name="email" placeholder="Email address" required>
+        <button type="submit">Submit</button>
+        {#if formError }
+           { formError }
+        {/if}
+    </form>
+</main>
+    
 
 <style lang="scss">
  

@@ -71,7 +71,6 @@ export const getUserFromToken = (decodedIdToken: DecodedIdToken)=>{
         email: email,
         uid: uid
     };
-    console.log("getUserFromToken", user);
     return user;
 }
 

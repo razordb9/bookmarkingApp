@@ -28,15 +28,6 @@
 
 		bookmarks.addBookmark(newBookmark);
 		dialog.close();
-		// $count = [...$count,
-		// 	{
-		// 		"Name" : (document.getElementById("name") as HTMLInputElement).value,
-		// 		"Beschreibung" : (document.getElementById("beschreibung") as HTMLInputElement).value,
-		// 		"URL" : (document.getElementById("url") as HTMLInputElement).value,
-		// 	}
-		// ];
-		// document.getElementById("newListItem").reset();
-		// dialog.close();
 	};
 </script>
 

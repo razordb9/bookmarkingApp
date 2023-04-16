@@ -14,22 +14,8 @@ const config = {
   "measurementId": "G-YGQ25JQZSL"
 }
 
-
-
-console.log("client init", JSON.parse(PUBLIC_FIREBASE_CLIENT));
-if(getApps.length == 0) {
-  console.log("client initialize getApps");
-}
-  console.log("getApps.length client initialize");
-  const app = initializeApp(config, "CLIENT");
-  const auth = getAuth(app);
-
-
-
-// const app = initializeApp(config, "CLIENT");
-
-
-// setPersistence(auth, inMemoryPersistence);
+const app = initializeApp(config, "CLIENT");
+const auth = getAuth(app);
 
 export {
   app,

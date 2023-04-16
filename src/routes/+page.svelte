@@ -9,7 +9,7 @@
 
 
 <main class="container">
-  
+
     <button on:click={() => (showNewListItem = true)}>
         New
     </button>

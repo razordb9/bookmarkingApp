@@ -21,6 +21,8 @@ Also install the following dependencies:
 - firebase
 - firebase-admin
 - sass
+- supabase/supabase-js
+- prisma --save-dev
 
 
 start a development server:

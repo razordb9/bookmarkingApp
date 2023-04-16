@@ -1,6 +1,8 @@
 <script lang="ts">
-    // import './style.css';
-    import '$lib/css/pico.min.css'
+    import '$lib/css/custom_style.css';
+    import '$lib/css/pico.min.css';
+    
+
     import Navigation from '$lib/Components/Navigation.svelte';
     import type { PageServerData } from './$types';
     import { onDestroy } from 'svelte';

@@ -15,24 +15,12 @@
     </button>
 
     <NewListItem bind:showNewListItem>
-        <!-- <h2 slot="header">
-            Add new Bockmark Item
-        </h2>
-        <div>
-            Name: <input type="text" value=""><br>
-            Url: <input type="text" value=""><br>
-            Beschreibung: <input type="text" value="">
-        </div> -->
-        
     </NewListItem>
+
+
     <Search />
     
-    <BookmarkList
-    
-    >
-
-
-    </BookmarkList>
+    <BookmarkList/>
 
 
     <!-- <h1>The count is {countValue}</h1> -->

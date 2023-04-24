@@ -54,11 +54,7 @@
 
 			<button on:click={addToStore}>save</button>
 		</form>
-		<!-- <hr /> -->
-		<!-- svelte-ignore a11y-autofocus -->
-		<!-- <Incrementer/>
-		<Decrementer/> -->
-        <button autofocus on:click={() => dialog.close()}>close</button>
+        <button on:click={() => dialog.close()}>close</button>
 	</div>
 </dialog>
 
